@@ -1,25 +1,15 @@
 . (Join-Path $PSScriptRoot '.\_Settings.ps1')
 
 $artifactUrl = Get-BCArtifactUrl `
-    -country de `
-    -type Sandbox `
-    -version 16.5
-    
-    
-$ContainerName = 'bcspecific'
-$ImageName = $ContainerName
+    -Type OnPrem `
+    -Select Latest `
+    -country be
 
-# $featureKeys = @{
-#     ActionBarDialogEarlyOverflow               = "None"
-#     DisableIntegrationManagement               = "None"
-#     EmailHandlingImprovements                  = "None"
-#     JournalErrorBackgroundCheck                = "None"
-#     PaymentReconciliationJournalUXImprovements = "None" 
-# }
+$ContainerName = 'bcdev2'
+$ImageName = $ContainerName
 
 $includeTestToolkit = $true
 $includeTestLibrariesOnly = $true
-$enableSymbolLoading = $false
 
 $StartMs = Get-date
 
@@ -34,10 +24,7 @@ New-BcContainer `
     -alwaysPull `
     -includeTestToolkit:$includeTestToolkit `
     -includeTestLibrariesOnly:$includeTestLibrariesOnly `
-    -licenseFile $SecretSettings.containerLicenseFile `
-    -featureKeys $featureKeys `
-    -enableSymbolLoading:$enableSymbolLoading
-
+    -licenseFile $SecretSettings.containerLicenseFile
 
 $EndMs = Get-date
 Write-host "This script took $(($EndMs - $StartMs).Seconds) seconds to run"
