@@ -2,7 +2,7 @@
 # . (Join-path $PSScriptRoot '_SettingsCustomers.ps1')
 
 
-$ToBranch = 'v17prep'
+$ToBranch = 'main'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green
