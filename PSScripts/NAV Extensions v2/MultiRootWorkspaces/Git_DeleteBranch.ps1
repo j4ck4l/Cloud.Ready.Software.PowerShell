@@ -3,18 +3,17 @@ param (
     [String] $Type = 'Distri'
 )
 
-Write-Host "Discard all changes for $Type"
+Write-Host "Deleting Branch"
 
 switch ($Type) {
     'Distri' { . (Join-path $PSScriptRoot '_Settings.ps1') }
     'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
 }
 
-
-if (-not(Confirm-YesOrNo -Message 'Are you sure to discard all?')) { break }
+$DeleteBranch = Read-host 'Delete Branch'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green
     Set-Location $Target
-    & git reset --hard
+    & git branch -D "$DeleteBranch"
 }

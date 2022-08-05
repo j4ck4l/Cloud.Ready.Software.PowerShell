@@ -2,8 +2,8 @@
 # . (Join-path $PSScriptRoot '_SettingsCustomers.ps1')
 
 
-#$MasterBranch = 'release/19.2.8'
-$MasterBranch = 'main'
+$MasterBranch = 'release/19.2.8'
+#$MasterBranch = 'main'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green

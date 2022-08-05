@@ -1,20 +1,17 @@
 param (
     [validateset('Distri', 'Customer')]
-    [String] $Type = 'Distri'
+    [String] $Type = 'Customer'
 )
 
-Write-Host "Discard all changes for $Type"
+Write-Host "git remote prune origin"
 
 switch ($Type) {
     'Distri' { . (Join-path $PSScriptRoot '_Settings.ps1') }
     'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
 }
 
-
-if (-not(Confirm-YesOrNo -Message 'Are you sure to discard all?')) { break }
-
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green
     Set-Location $Target
-    & git reset --hard
+    & git remote prune origin
 }
