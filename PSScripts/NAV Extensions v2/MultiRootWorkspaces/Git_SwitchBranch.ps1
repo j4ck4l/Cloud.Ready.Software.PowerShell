@@ -10,10 +10,12 @@ switch ($Type) {
     'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
 }
 
-$ToBranch = Read-host 'To Branch'
+$ToBranch = 'main'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green
     Set-Location $Target
     & git checkout -q "$ToBranch"
+    & git pull
+    & git push
 }

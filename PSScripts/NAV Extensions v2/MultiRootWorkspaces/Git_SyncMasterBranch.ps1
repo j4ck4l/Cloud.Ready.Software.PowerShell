@@ -1,16 +1,9 @@
-param (
-    [validateset('Distri', 'Customer')]
-    [String] $Type = 'Customer'
-)
+. (Join-path $PSScriptRoot '_Settings.ps1')
+# . (Join-path $PSScriptRoot '_SettingsCustomers.ps1')
 
-Write-Host "Syncing Master Branch for $Type"
 
-switch ($Type) {
-    'Distri' { . (Join-path $PSScriptRoot '_Settings.ps1') }
-    'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
-}
-
-$MasterBranch = 'master'
+$MasterBranch = 'release/19.2.8'
+#$MasterBranch = 'main'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green

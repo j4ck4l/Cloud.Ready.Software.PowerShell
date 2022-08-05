@@ -1,4 +1,4 @@
-$Workspace = "C:\_Source\iFacto\Customers\"
+$Workspace = "C:\work\customer"
 $BaseFolder = join-path $workspace 'All in 1\App'
 $SymbolFolder = '.alpackages'
 

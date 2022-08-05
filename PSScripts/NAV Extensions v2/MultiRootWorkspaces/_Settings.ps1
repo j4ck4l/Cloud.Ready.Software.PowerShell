@@ -1,5 +1,5 @@
-$Workspace = "C:\_Source\iFacto\DistriApps\"
-$BaseFolder = join-path $workspace 'LICENSING\App'
+$Workspace = "C:\work\repos" 
+$BaseFolder = join-path $workspace 'dxsteel\App'
 $SymbolFolder = '.alpackages'
 
 $AppJsons = Get-ChildItem $Workspace -Recurse 'app.json'

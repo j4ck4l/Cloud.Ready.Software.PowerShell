@@ -10,8 +10,9 @@ switch ($Type) {
     'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
 }
 
-$MasterBranch = 'master'
-$NewBranch = Read-Host 'New Branch'
+#$MasterBranch = 'release/19.2.8'
+$MasterBranch = 'main'
+$NewBranch = 'brandpe/dxs-9065'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green
