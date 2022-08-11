@@ -1,18 +1,18 @@
 param (
-    [validateset('Distri', 'Customer')]
-    [String] $Type = 'Distri'
+    [validateset('Dxstee;', 'Customer')]
+    [String] $Type = 'Customer'
 )
 
 Write-Host "Discard all changes for $Type"
 
 switch ($Type) {
-    'Distri' { . (Join-path $PSScriptRoot '_Settings.ps1') }
+    'Dxsteel' { . (Join-path $PSScriptRoot '_Settings.ps1') }
     'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
 }
 
 #$MasterBranch = 'release/19.2.8'
 $MasterBranch = 'main'
-$NewBranch = 'brandpe/dxs-9065'
+$NewBranch = 'brandpe/19.2.10'
 
 foreach ($Target in $targetRepos) {
     write-host $Target -ForegroundColor Green
