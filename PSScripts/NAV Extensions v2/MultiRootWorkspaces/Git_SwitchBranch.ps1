@@ -1,12 +1,12 @@
 param (
-    [validateset('Distri', 'Customer')]
-    [String] $Type = 'Distri'
+    [validateset('Dxsteel', 'Customer')]
+    [String] $Type = 'Dxsteel'
 )
 
 Write-Host "Discard all changes for $Type"
 
 switch ($Type) {
-    'Distri' { . (Join-path $PSScriptRoot '_Settings.ps1') }
+    'Dxsteel' { . (Join-path $PSScriptRoot '_Settings.ps1') }
     'Customer' { . (Join-path $PSScriptRoot '_SettingsCustomers.ps1') }
 }
 
@@ -17,5 +17,4 @@ foreach ($Target in $targetRepos) {
     Set-Location $Target
     & git checkout -q "$ToBranch"
     & git pull
-    & git push
 }
